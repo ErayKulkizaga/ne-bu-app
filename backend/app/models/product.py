@@ -15,9 +15,9 @@ class Product(Base):
     category: Mapped[str | None] = mapped_column(String(64), nullable=True)
     raw_ingredients: Mapped[str | None] = mapped_column(Text, nullable=True)
     image_url: Mapped[str | None] = mapped_column(String(512), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(DateTime(), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+        DateTime(), server_default=func.now(), onupdate=func.now()
     )
 
     product_ingredients: Mapped[list["ProductIngredient"]] = relationship(  # type: ignore[name-defined]
