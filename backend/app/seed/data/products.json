@@ -1,0 +1,138 @@
+{
+  "additives": [
+    { "e_number": "E100", "name": "Curcumin", "category": "Colour", "concern_level": 0, "notes": "Natural yellow colour from turmeric. Generally well-tolerated." },
+    { "e_number": "E102", "name": "Tartrazine", "category": "Colour", "concern_level": 3, "notes": "Artificial yellow dye. Subject to ongoing consumer discussion; some studies suggest sensitivity in certain individuals." },
+    { "e_number": "E110", "name": "Sunset Yellow FCF", "category": "Colour", "concern_level": 3, "notes": "Artificial orange dye linked to hypersensitivity reactions in some individuals." },
+    { "e_number": "E120", "name": "Cochineal / Carmine", "category": "Colour", "concern_level": 1, "notes": "Natural red colour derived from insects. May concern some dietary groups." },
+    { "e_number": "E150a", "name": "Plain Caramel", "category": "Colour", "concern_level": 1, "notes": "Widely used caramel colour. Generally considered low concern at typical levels." },
+    { "e_number": "E150d", "name": "Sulfite Ammonia Caramel", "category": "Colour", "concern_level": 2, "notes": "Produced with ammonia and sulfites; some consumer preference to avoid." },
+    { "e_number": "E200", "name": "Sorbic Acid", "category": "Preservative", "concern_level": 1, "notes": "Common preservative. Well-studied; generally low concern." },
+    { "e_number": "E202", "name": "Potassium Sorbate", "category": "Preservative", "concern_level": 1, "notes": "Common preservative. Considered low concern." },
+    { "e_number": "E211", "name": "Sodium Benzoate", "category": "Preservative", "concern_level": 3, "notes": "When combined with vitamin C, may form benzene. Some consumers prefer to avoid." },
+    { "e_number": "E220", "name": "Sulphur Dioxide", "category": "Preservative", "concern_level": 2, "notes": "Can trigger reactions in sensitive individuals, particularly asthmatics." },
+    { "e_number": "E250", "name": "Sodium Nitrite", "category": "Preservative", "concern_level": 3, "notes": "Used in processed meats. Some studies associate high intake with health concerns." },
+    { "e_number": "E300", "name": "Ascorbic Acid (Vitamin C)", "category": "Antioxidant", "concern_level": 0, "notes": "Natural antioxidant. No known concerns." },
+    { "e_number": "E322", "name": "Lecithins", "category": "Emulsifier", "concern_level": 0, "notes": "Commonly derived from soy or sunflower. Generally well-tolerated." },
+    { "e_number": "E407", "name": "Carrageenan", "category": "Stabiliser", "concern_level": 2, "notes": "Derived from red seaweed. Subject to ongoing scientific debate regarding gut health." },
+    { "e_number": "E412", "name": "Guar Gum", "category": "Thickener", "concern_level": 0, "notes": "Natural thickener. Generally considered low concern." },
+    { "e_number": "E415", "name": "Xanthan Gum", "category": "Thickener", "concern_level": 0, "notes": "Fermentation-derived thickener. Well-tolerated by most people." },
+    { "e_number": "E420", "name": "Sorbitol", "category": "Sweetener", "concern_level": 1, "notes": "Sugar alcohol. May cause digestive discomfort in high amounts." },
+    { "e_number": "E450", "name": "Diphosphates", "category": "Raising Agent", "concern_level": 1, "notes": "Used as raising agent and emulsifier. Moderate phosphate load." },
+    { "e_number": "E471", "name": "Mono- and Diglycerides of Fatty Acids", "category": "Emulsifier", "concern_level": 1, "notes": "Common emulsifier. Some consumers prefer to avoid synthetic emulsifiers." },
+    { "e_number": "E472e", "name": "Diacetyl Tartaric Acid Esters of Mono- and Diglycerides", "category": "Emulsifier", "concern_level": 1, "notes": "Used in bread and bakery. Some consumers prefer to avoid." },
+    { "e_number": "E500", "name": "Sodium Carbonates", "category": "Raising Agent", "concern_level": 0, "notes": "Standard raising agent. Low concern." },
+    { "e_number": "E621", "name": "Monosodium Glutamate (MSG)", "category": "Flavour Enhancer", "concern_level": 2, "notes": "Widely used flavour enhancer. Some individuals report sensitivity; scientific consensus considers it safe for most." },
+    { "e_number": "E627", "name": "Disodium Guanylate", "category": "Flavour Enhancer", "concern_level": 1, "notes": "Often used alongside MSG to amplify savoury flavour." },
+    { "e_number": "E951", "name": "Aspartame", "category": "Sweetener", "concern_level": 3, "notes": "Artificial sweetener. Subject of ongoing scientific and consumer discussion. Not suitable for PKU sufferers." },
+    { "e_number": "E950", "name": "Acesulfame K", "category": "Sweetener", "concern_level": 2, "notes": "Artificial sweetener. Some consumers prefer to avoid." },
+    { "e_number": "E955", "name": "Sucralose", "category": "Sweetener", "concern_level": 2, "notes": "Chlorinated artificial sweetener. Some recent research suggests potential effects on gut microbiome at high doses." },
+    { "e_number": "E960", "name": "Steviol Glycosides", "category": "Sweetener", "concern_level": 0, "notes": "Derived from the stevia plant. Generally considered a natural, low-concern sweetener." }
+  ],
+  "ingredients": [
+    { "name": "Water", "normalized_name": "water", "is_additive": false, "concern_level": 0 },
+    { "name": "Sugar", "normalized_name": "sugar", "is_additive": false, "concern_level": 0 },
+    { "name": "Salt", "normalized_name": "salt", "is_additive": false, "concern_level": 0 },
+    { "name": "Wheat Flour", "normalized_name": "wheat flour", "is_additive": false, "concern_level": 0 },
+    { "name": "Palm Oil", "normalized_name": "palm oil", "is_additive": false, "concern_level": 1, "description": "High in saturated fat; environmental concerns around production." },
+    { "name": "Sunflower Oil", "normalized_name": "sunflower oil", "is_additive": false, "concern_level": 0 },
+    { "name": "Skimmed Milk Powder", "normalized_name": "skimmed milk powder", "is_additive": false, "concern_level": 0 },
+    { "name": "Cocoa Powder", "normalized_name": "cocoa powder", "is_additive": false, "concern_level": 0 },
+    { "name": "Natural Flavouring", "normalized_name": "natural flavouring", "is_additive": false, "concern_level": 0 },
+    { "name": "Flavouring", "normalized_name": "flavouring", "is_additive": false, "concern_level": 0 },
+    { "name": "Modified Starch", "normalized_name": "modified starch", "is_additive": true, "additive_type": "Thickener", "concern_level": 1, "description": "Chemically or physically modified starch used as thickener or stabiliser." },
+    { "name": "High Fructose Corn Syrup", "normalized_name": "high fructose corn syrup", "is_additive": false, "concern_level": 2, "description": "Highly processed sweetener associated with high sugar intake." },
+    { "name": "Glucose Syrup", "normalized_name": "glucose syrup", "is_additive": false, "concern_level": 1 },
+    { "name": "Whole Milk", "normalized_name": "whole milk", "is_additive": false, "concern_level": 0 },
+    { "name": "Oats", "normalized_name": "oats", "is_additive": false, "concern_level": 0 },
+    { "name": "Honey", "normalized_name": "honey", "is_additive": false, "concern_level": 0 },
+    { "name": "Yeast Extract", "normalized_name": "yeast extract", "is_additive": false, "concern_level": 1, "description": "Contains glutamates; used as a flavour booster." },
+    { "name": "Citric Acid", "normalized_name": "citric acid", "is_additive": true, "additive_type": "Acidity Regulator", "concern_level": 0 },
+    { "name": "Sodium Bicarbonate", "normalized_name": "sodium bicarbonate", "is_additive": true, "additive_type": "Raising Agent", "concern_level": 0 }
+  ],
+  "products": [
+    {
+      "barcode": "8690501050019",
+      "name": "Classic Potato Chips - Original",
+      "brand": "SnackCo",
+      "category": "Snacks",
+      "raw_ingredients": "Potatoes, Sunflower Oil, Salt, Dextrose, Flavouring, E621 (Monosodium Glutamate), E627 (Disodium Guanylate)"
+    },
+    {
+      "barcode": "8690501050026",
+      "name": "Barbecue Potato Chips",
+      "brand": "SnackCo",
+      "category": "Snacks",
+      "raw_ingredients": "Potatoes, Palm Oil, Salt, Sugar, Maltodextrin, Flavouring, Natural Flavouring, E621 (Monosodium Glutamate), E627, E110 (Sunset Yellow FCF), E102 (Tartrazine), E471 (Emulsifier)"
+    },
+    {
+      "barcode": "8690601234501",
+      "name": "Strawberry Fruit Yoghurt",
+      "brand": "DairyFresh",
+      "category": "Dairy",
+      "raw_ingredients": "Whole Milk, Strawberry Preparation (12%), Sugar, Skimmed Milk Powder, Modified Starch, E407 (Carrageenan), E202 (Potassium Sorbate), Citric Acid, Natural Flavouring"
+    },
+    {
+      "barcode": "8690601234518",
+      "name": "Plain Greek Yoghurt",
+      "brand": "DairyFresh",
+      "category": "Dairy",
+      "raw_ingredients": "Whole Milk, Skimmed Milk, Live Cultures (Lactobacillus bulgaricus, Streptococcus thermophilus)"
+    },
+    {
+      "barcode": "5000112637922",
+      "name": "Energy Boost Drink",
+      "brand": "VoltUp",
+      "category": "Beverages",
+      "raw_ingredients": "Carbonated Water, Sugar, Glucose Syrup, Citric Acid, Taurine (0.4%), Caffeine (0.03%), Niacin, Pantothenic Acid, Vitamin B6, Vitamin B12, E211 (Sodium Benzoate), E951 (Aspartame), E950 (Acesulfame K), E102 (Tartrazine), E110 (Sunset Yellow FCF), Natural Flavouring"
+    },
+    {
+      "barcode": "5000112637939",
+      "name": "Sparkling Mineral Water",
+      "brand": "AquaPure",
+      "category": "Beverages",
+      "raw_ingredients": "Carbonated Natural Mineral Water"
+    },
+    {
+      "barcode": "7622300441951",
+      "name": "Chocolate Sandwich Biscuits",
+      "brand": "CreemBite",
+      "category": "Biscuits",
+      "raw_ingredients": "Wheat Flour, Sugar, Palm Oil, Cocoa Powder (6%), Glucose Syrup, Skimmed Milk Powder, Salt, Raising Agents (E500, E450), Emulsifier (E471, E472e), Flavouring, E322 (Lecithins)"
+    },
+    {
+      "barcode": "7622300441968",
+      "name": "Oat & Honey Biscuits",
+      "brand": "CreemBite",
+      "category": "Biscuits",
+      "raw_ingredients": "Oats (40%), Wheat Flour, Honey (8%), Sunflower Oil, Sugar, Salt, Sodium Bicarbonate"
+    },
+    {
+      "barcode": "4001702038021",
+      "name": "Chocolate Hazelnut Spread",
+      "brand": "NutriSpread",
+      "category": "Spreads",
+      "raw_ingredients": "Sugar, Palm Oil, Hazelnuts (13%), Skimmed Milk Powder, Cocoa (7.4%), Lecithins (E322), Vanillin"
+    },
+    {
+      "barcode": "4001702038038",
+      "name": "Almond Butter - No Added Sugar",
+      "brand": "NutriSpread",
+      "category": "Spreads",
+      "raw_ingredients": "Almonds (99%), Sea Salt"
+    },
+    {
+      "barcode": "8690500110028",
+      "name": "Oat & Berry Granola Bar",
+      "brand": "GoBar",
+      "category": "Snack Bars",
+      "raw_ingredients": "Oats (35%), Glucose Syrup, Sugar, Sunflower Oil, Dried Cranberries (8%), Honey (5%), Wheat Flour, Salt, E322 (Soy Lecithin), Natural Flavouring"
+    },
+    {
+      "barcode": "8690500110035",
+      "name": "Protein Bar - Chocolate",
+      "brand": "GoBar",
+      "category": "Snack Bars",
+      "raw_ingredients": "Soy Protein Isolate, Glucose Syrup, Palm Oil, Cocoa Powder, Modified Starch, Glycerol, Salt, Flavouring, E471 (Mono- and Diglycerides), E322 (Lecithins), E955 (Sucralose), E950 (Acesulfame K), E415 (Xanthan Gum)"
+    }
+  ]
+}
