@@ -9,7 +9,9 @@ import {
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, Spacing, FontSize, Radius } from '@/constants/theme';
+import { Colors, Spacing, FontSize, Radius, Shadow } from '@/constants/theme';
+
+const QUICK_SEARCHES = ['Chips', 'Yoghurt', 'Energy Drink', 'Biscuits', 'Granola'];
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -22,23 +24,40 @@ export default function HomeScreen() {
   }
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      {/* Hero */}
-      <View style={styles.hero}>
-        <Text style={styles.brandName}>NeBU</Text>
-        <Text style={styles.tagline}>Know what's in your food.</Text>
-        <Text style={styles.subtitle}>
-          Search any product to see its ingredient breakdown, risk score, and cleaner alternatives.
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}
+    >
+      {/* Header */}
+      <View style={styles.header}>
+        <View>
+          <Text style={styles.greeting}>Good day! 👋</Text>
+          <Text style={styles.brandName}>NeBU</Text>
+          <Text style={styles.tagline}>Know what's in your food.</Text>
+        </View>
+        <View style={styles.streakBadge}>
+          <Text style={styles.streakEmoji}>🔥</Text>
+          <Text style={styles.streakText}>NEW</Text>
+        </View>
+      </View>
+
+      {/* Hero card */}
+      <View style={[styles.heroCard, Shadow.md]}>
+        <Text style={styles.heroEmoji}>🔍</Text>
+        <Text style={styles.heroTitle}>Scan any product</Text>
+        <Text style={styles.heroSubtitle}>
+          Search by name or barcode to instantly analyse ingredients and get a safety score.
         </Text>
       </View>
 
-      {/* Search */}
-      <View style={styles.searchRow}>
-        <View style={styles.searchInputWrapper}>
-          <Ionicons name="search" size={18} color={Colors.textMuted} style={styles.searchIcon} />
+      {/* Search bar */}
+      <View style={styles.searchSection}>
+        <View style={[styles.searchInputWrapper, Shadow.sm]}>
+          <Ionicons name="search" size={20} color={Colors.textMuted} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search by name or barcode..."
+            placeholder="Search products..."
             placeholderTextColor={Colors.textSubtle}
             value={query}
             onChangeText={setQuery}
@@ -46,33 +65,63 @@ export default function HomeScreen() {
             returnKeyType="search"
             autoCapitalize="none"
           />
+          {query.length > 0 && (
+            <TouchableOpacity onPress={() => setQuery('')}>
+              <Ionicons name="close-circle" size={18} color={Colors.textSubtle} />
+            </TouchableOpacity>
+          )}
         </View>
         <TouchableOpacity style={styles.searchBtn} onPress={handleSearch}>
-          <Text style={styles.searchBtnText}>Go</Text>
+          <Text style={styles.searchBtnText}>GO</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Quick actions */}
+      {/* Quick search chips */}
+      <View style={styles.chipsRow}>
+        {QUICK_SEARCHES.map((term) => (
+          <TouchableOpacity
+            key={term}
+            style={styles.chip}
+            onPress={() => router.push({ pathname: '/search', params: { q: term } })}
+          >
+            <Text style={styles.chipText}>{term}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Action cards */}
+      <Text style={styles.sectionTitle}>Quick Actions</Text>
       <View style={styles.actionsRow}>
-        <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/search')}>
-          <Ionicons name="barcode-outline" size={28} color={Colors.accent} />
-          <Text style={styles.actionLabel}>Barcode Entry</Text>
+        <TouchableOpacity
+          style={[styles.actionCard, styles.actionCardGreen, Shadow.sm]}
+          onPress={() => router.push('/search')}
+        >
+          <Text style={styles.actionEmoji}>📷</Text>
+          <Text style={styles.actionLabel}>Barcode</Text>
+          <Text style={styles.actionSub}>Enter manually</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.actionCard, styles.actionDisabled]}>
-          <Ionicons name="camera-outline" size={28} color={Colors.textSubtle} />
-          <Text style={[styles.actionLabel, styles.actionLabelDisabled]}>Scan Label</Text>
-          <Text style={styles.comingSoon}>Coming soon</Text>
+
+        <TouchableOpacity style={[styles.actionCard, styles.actionCardYellow, Shadow.sm]}>
+          <Text style={styles.actionEmoji}>📸</Text>
+          <Text style={styles.actionLabel}>Scan Label</Text>
+          <View style={styles.soonPill}>
+            <Text style={styles.soonText}>Soon</Text>
+          </View>
         </TouchableOpacity>
       </View>
 
-      {/* Recent scans placeholder */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Recent Scans</Text>
-        <View style={styles.emptyCard}>
-          <Ionicons name="time-outline" size={32} color={Colors.textSubtle} />
-          <Text style={styles.emptyText}>No recent scans yet.</Text>
-          <Text style={styles.emptySubText}>Search for a product above to get started.</Text>
-        </View>
+      {/* Recent scans */}
+      <Text style={styles.sectionTitle}>Recent Scans</Text>
+      <View style={[styles.emptyCard, Shadow.sm]}>
+        <Text style={styles.emptyEmoji}>📋</Text>
+        <Text style={styles.emptyTitle}>No scans yet</Text>
+        <Text style={styles.emptyText}>Search for a product to get started!</Text>
+        <TouchableOpacity
+          style={styles.emptyBtn}
+          onPress={() => router.push('/search')}
+        >
+          <Text style={styles.emptyBtnText}>Start Scanning</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -80,74 +129,153 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
-  content: { padding: Spacing.md, paddingBottom: Spacing.xxl },
-  hero: { paddingTop: Spacing.xxl, paddingBottom: Spacing.xl, alignItems: 'center' },
+  content: { paddingBottom: Spacing.xxl },
+
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    paddingHorizontal: Spacing.md,
+    paddingTop: 56,
+    paddingBottom: Spacing.md,
+    backgroundColor: Colors.primarySurface,
+  },
+  greeting: { fontSize: FontSize.sm, color: Colors.textMuted, fontWeight: '600' },
   brandName: {
     fontSize: FontSize.hero,
-    fontWeight: '800',
-    color: Colors.accent,
-    letterSpacing: 2,
+    fontWeight: '900',
+    color: Colors.primary,
+    letterSpacing: -1,
+    lineHeight: 44,
   },
-  tagline: {
-    fontSize: FontSize.xl,
-    fontWeight: '600',
-    color: Colors.text,
-    marginTop: Spacing.sm,
+  tagline: { fontSize: FontSize.sm, color: Colors.textMuted, fontWeight: '600', marginTop: 2 },
+  streakBadge: {
+    backgroundColor: Colors.accent,
+    borderRadius: Radius.lg,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.xs,
+    alignItems: 'center',
+    ...Shadow.sm,
   },
-  subtitle: {
+  streakEmoji: { fontSize: 22 },
+  streakText: { fontSize: FontSize.xs, fontWeight: '900', color: Colors.text },
+
+  heroCard: {
+    margin: Spacing.md,
+    backgroundColor: Colors.primary,
+    borderRadius: Radius.xl,
+    padding: Spacing.lg,
+    alignItems: 'center',
+  },
+  heroEmoji: { fontSize: 40, marginBottom: Spacing.sm },
+  heroTitle: { fontSize: FontSize.xl, fontWeight: '900', color: '#fff', textAlign: 'center' },
+  heroSubtitle: {
     fontSize: FontSize.sm,
-    color: Colors.textMuted,
+    color: 'rgba(255,255,255,0.85)',
     textAlign: 'center',
-    marginTop: Spacing.sm,
+    marginTop: Spacing.xs,
     lineHeight: 20,
-    paddingHorizontal: Spacing.md,
   },
-  searchRow: { flexDirection: 'row', gap: Spacing.sm, marginBottom: Spacing.lg },
+
+  searchSection: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
+    paddingHorizontal: Spacing.md,
+    marginBottom: Spacing.sm,
+  },
   searchInputWrapper: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.surface,
-    borderRadius: Radius.md,
-    borderWidth: 1,
+    backgroundColor: Colors.background,
+    borderRadius: Radius.full,
+    borderWidth: 2,
     borderColor: Colors.border,
     paddingHorizontal: Spacing.md,
-  },
-  searchIcon: { marginRight: Spacing.sm },
-  searchInput: { flex: 1, color: Colors.text, fontSize: FontSize.md, paddingVertical: 12 },
-  searchBtn: {
-    backgroundColor: Colors.accent,
-    borderRadius: Radius.md,
-    paddingHorizontal: Spacing.lg,
-    justifyContent: 'center',
-  },
-  searchBtnText: { color: Colors.background, fontWeight: '700', fontSize: FontSize.md },
-  actionsRow: { flexDirection: 'row', gap: Spacing.md, marginBottom: Spacing.xl },
-  actionCard: {
-    flex: 1,
-    backgroundColor: Colors.surface,
-    borderRadius: Radius.lg,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    padding: Spacing.md,
-    alignItems: 'center',
     gap: Spacing.sm,
   },
-  actionDisabled: { opacity: 0.5 },
-  actionLabel: { fontSize: FontSize.sm, color: Colors.text, fontWeight: '600' },
-  actionLabelDisabled: { color: Colors.textSubtle },
-  comingSoon: { fontSize: FontSize.xs, color: Colors.textSubtle },
-  section: { gap: Spacing.md },
-  sectionTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.text },
-  emptyCard: {
+  searchInput: { flex: 1, fontSize: FontSize.md, color: Colors.text, paddingVertical: 12 },
+  searchBtn: {
+    backgroundColor: Colors.primary,
+    borderRadius: Radius.full,
+    paddingHorizontal: Spacing.lg,
+    justifyContent: 'center',
+    alignItems: 'center',
+    minWidth: 56,
+    height: 48,
+  },
+  searchBtnText: { color: '#fff', fontWeight: '900', fontSize: FontSize.sm, letterSpacing: 1 },
+
+  chipsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: Spacing.sm,
+    paddingHorizontal: Spacing.md,
+    marginBottom: Spacing.lg,
+  },
+  chip: {
     backgroundColor: Colors.surface,
-    borderRadius: Radius.lg,
-    borderWidth: 1,
+    borderRadius: Radius.full,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs + 2,
+    borderWidth: 1.5,
     borderColor: Colors.border,
+  },
+  chipText: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.textMuted },
+
+  sectionTitle: {
+    fontSize: FontSize.lg,
+    fontWeight: '900',
+    color: Colors.text,
+    paddingHorizontal: Spacing.md,
+    marginBottom: Spacing.sm,
+  },
+  actionsRow: {
+    flexDirection: 'row',
+    gap: Spacing.md,
+    paddingHorizontal: Spacing.md,
+    marginBottom: Spacing.xl,
+  },
+  actionCard: {
+    flex: 1,
+    borderRadius: Radius.xl,
+    padding: Spacing.md,
+    alignItems: 'center',
+    gap: Spacing.xs,
+  },
+  actionCardGreen: { backgroundColor: Colors.primarySurface, borderWidth: 2, borderColor: Colors.primaryLight },
+  actionCardYellow: { backgroundColor: Colors.accentSurface, borderWidth: 2, borderColor: Colors.accent },
+  actionEmoji: { fontSize: 32 },
+  actionLabel: { fontSize: FontSize.md, fontWeight: '800', color: Colors.text },
+  actionSub: { fontSize: FontSize.xs, color: Colors.textMuted, fontWeight: '600' },
+  soonPill: {
+    backgroundColor: Colors.accent,
+    borderRadius: Radius.full,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: 2,
+  },
+  soonText: { fontSize: FontSize.xs, fontWeight: '900', color: Colors.text },
+
+  emptyCard: {
+    margin: Spacing.md,
+    backgroundColor: Colors.surface,
+    borderRadius: Radius.xl,
     padding: Spacing.xl,
     alignItems: 'center',
     gap: Spacing.sm,
+    borderWidth: 2,
+    borderColor: Colors.border,
+    borderStyle: 'dashed',
   },
-  emptyText: { fontSize: FontSize.md, color: Colors.textMuted, fontWeight: '600' },
-  emptySubText: { fontSize: FontSize.sm, color: Colors.textSubtle, textAlign: 'center' },
+  emptyEmoji: { fontSize: 40 },
+  emptyTitle: { fontSize: FontSize.lg, fontWeight: '900', color: Colors.text },
+  emptyText: { fontSize: FontSize.sm, color: Colors.textMuted, textAlign: 'center' },
+  emptyBtn: {
+    marginTop: Spacing.sm,
+    backgroundColor: Colors.primary,
+    borderRadius: Radius.full,
+    paddingHorizontal: Spacing.xl,
+    paddingVertical: Spacing.sm,
+  },
+  emptyBtnText: { color: '#fff', fontWeight: '900', fontSize: FontSize.md },
 });

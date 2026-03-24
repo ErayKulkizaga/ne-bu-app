@@ -15,14 +15,33 @@ function scoreColor(score: number): string {
   return Colors.scoreHigh;
 }
 
+function scoreBg(score: number): string {
+  if (score <= 20) return '#F0FBE3';
+  if (score <= 40) return '#F4FCE3';
+  if (score <= 60) return '#FFF8E1';
+  if (score <= 80) return '#FFF3E0';
+  return '#FFEBEB';
+}
+
+function scoreEmoji(score: number): string {
+  if (score <= 20) return '🟢';
+  if (score <= 40) return '🟡';
+  if (score <= 60) return '🟠';
+  if (score <= 80) return '🔴';
+  return '☠️';
+}
+
 export function ScoreBadge({ score, label, size = 'md' }: Props) {
   const color = scoreColor(score);
-  const isLarge = size === 'lg';
+  const bg = scoreBg(score);
+  const isLg = size === 'lg';
+  const isSm = size === 'sm';
 
   return (
-    <View style={[styles.badge, { borderColor: color }, isLarge && styles.badgeLg]}>
-      <Text style={[styles.number, { color }, isLarge && styles.numberLg]}>{score}</Text>
-      <Text style={[styles.label, { color }, isLarge && styles.labelLg]}>{label}</Text>
+    <View style={[styles.badge, { backgroundColor: bg, borderColor: color }, isLg && styles.badgeLg, isSm && styles.badgeSm]}>
+      {!isSm && <Text style={isLg ? styles.emojiLg : styles.emoji}>{scoreEmoji(score)}</Text>}
+      <Text style={[styles.number, { color }, isLg && styles.numberLg, isSm && styles.numberSm]}>{score}</Text>
+      {!isSm && <Text style={[styles.label, { color }, isLg && styles.labelLg]}>{label}</Text>}
     </View>
   );
 }
@@ -30,15 +49,20 @@ export function ScoreBadge({ score, label, size = 'md' }: Props) {
 const styles = StyleSheet.create({
   badge: {
     alignItems: 'center',
-    borderWidth: 1.5,
-    borderRadius: Radius.md,
+    borderWidth: 2,
+    borderRadius: Radius.lg,
     paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.xs,
-    minWidth: 56,
+    paddingVertical: Spacing.sm,
+    minWidth: 64,
+    gap: 2,
   },
-  badgeLg: { minWidth: 70, paddingVertical: Spacing.sm },
-  number: { fontSize: FontSize.lg, fontWeight: '800' },
+  badgeLg: { minWidth: 90, paddingVertical: Spacing.md, borderRadius: Radius.xl, gap: 4 },
+  badgeSm: { minWidth: 40, paddingHorizontal: Spacing.xs, paddingVertical: Spacing.xs, borderRadius: Radius.md },
+  emoji: { fontSize: 18 },
+  emojiLg: { fontSize: 28 },
+  number: { fontSize: FontSize.lg, fontWeight: '900' },
   numberLg: { fontSize: FontSize.xxl },
-  label: { fontSize: FontSize.xs, fontWeight: '600', textAlign: 'center' },
+  numberSm: { fontSize: FontSize.sm, fontWeight: '900' },
+  label: { fontSize: FontSize.xs, fontWeight: '800', textAlign: 'center' },
   labelLg: { fontSize: FontSize.sm },
 });

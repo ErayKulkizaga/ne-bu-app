@@ -5,12 +5,12 @@ import { Colors } from '@/constants/theme';
 export default function RootLayout() {
   return (
     <>
-      <StatusBar style="light" backgroundColor={Colors.background} />
+      <StatusBar style="dark" backgroundColor={Colors.background} />
       <Stack
         screenOptions={{
           headerStyle: { backgroundColor: Colors.background },
           headerTintColor: Colors.text,
-          headerTitleStyle: { fontWeight: '700' },
+          headerTitleStyle: { fontWeight: '800', fontSize: 18 },
           contentStyle: { backgroundColor: Colors.background },
           headerShadowVisible: false,
         }}
